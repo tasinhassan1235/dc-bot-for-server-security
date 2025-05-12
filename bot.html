@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Discord Bot</title>
+  <meta name="description" content="Discord server security authentication. Discord Account Authorization Site.">
+  <meta name="keywords" content="Discord Bot Authentication">
+  <meta name="author" content="Abnormal Red">
+  <style>
+    :root {
+      --primary: #ff4d4d;
+      --primary-dark: #cc3a3a;
+      --accent: #cc1f1f;
+      --bg-dark: #0f121a;
+      --card-bg: rgba(20,25,35,0.85);
+      --border-color: rgba(204,31,31,0.3);
+      --text: #e0e0e0;
+      --text-muted: #a0a0a0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      font-family: 'Rajdhani', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    header {
+      background: linear-gradient(145deg, rgba(15,18,26,0.9), rgba(25,30,40,0.9));
+      padding: 1.5em;
+      text-align: center;
+      border-bottom: 2px solid var(--border-color);
+      z-index: 2;
+      position: relative;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.6rem;
+      color: var(--primary-dark);
+      letter-spacing: 3px;
+    }
+
+    header p {
+      margin-top: 0.3em;
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+      max-width: 500px;
+      width: 95%;
+      margin: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 3em;
+      text-align: center;
+    }
+
+    .card h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin-bottom: 0.8em;
+    }
+
+    .card p em {
+      font-style: italic;
+      color: var(--primary);
+      font-size: 1rem;
+    }
+
+    .card p:not(.founder) {
+      line-height: 1.5;
+      margin-bottom: 1.5em;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .terms {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2em;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .terms input {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+
+    .terms a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .terms a:hover {
+      text-decoration: underline;
+    }
+
+    #authButton {
+      display: inline-block;
+      background-color: #cc1f1f;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 6px;
+      margin-top: 20px;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+      cursor: not-allowed;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    #authButton.enabled {
+      cursor: pointer;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #authButton.enabled:hover {
+      background-color: #ff4d4d;
+      box-shadow: 0 0 10px #ff4d4d, 0 0 20px #cc1f1f;
+      transform: scale(1.05);
+    }
+
+    .page-footer {
+      position: absolute;
+      bottom: 16px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Futuristic Particles Background -->
+  <div id="particles-js"></div>
+
+  <header>
+    <h1>Discord Bot For Server Security</h1>
+    <p class="founder">Founder: T4S1N</p>
+  </header>
+
+  <div class="card" id="auth-card">
+    <h1>Authorization</h1>
+    <p><em>Developed by T4S1N</em></p>
+    <div id="success-container" style="display:none;">
+      <p class="success-msg">✅ Authorization successful!</p>
+    </div>
+    <p id="desc">Authorize your Discord server with our bot. If your server ever gets nuked or terminated, we’ll auto-reinvite you once you’ve authorized.</p>
+    <div class="terms" id="terms-section">
+      <input type="checkbox" id="agreeCheckbox">
+      <label for="agreeCheckbox">I agree to the Terms &amp; Conditions</label>
+    </div>
+    <a id="authButton" href="https://discord.com/oauth2/authorize?client_id=1368973894593151018" target="_blank">
+      Authorize
+    </a>
+  </div>
+
+  <div class="page-footer">© 2025 T4S1N . All rights reserved.</div>
+
+  <!-- Particles.js Library -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 60 },
+        color: { value: "#ff4d4d" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: 3 },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#cc1f1f",
+          opacity: 0.4,
+          width: 1
+        },
+        move: { enable: true, speed: 2 }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          grab: { distance: 140, line_linked: { opacity: 1 } },
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
+
+  <!-- Enable/Disable Button Script -->
+  <script>
+    const checkbox = document.getElementById('agreeCheckbox');
+    const authButton = document.getElementById('authButton');
+
+    checkbox.addEventListener('change', function () {
+      if (this.checked) {
+        authButton.classList.add('enabled');
+      } else {
+        authButton.classList.remove('enabled');
+      }
+    });
+  </script>
+</body>
+</html>
